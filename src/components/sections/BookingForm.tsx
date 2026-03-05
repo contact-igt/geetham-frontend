@@ -1,19 +1,46 @@
 "use client"
 
 import { useState } from "react"
-import { MapPin, Phone, Mail, Send, CheckCircle2, Clock, Instagram, Facebook } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { MapPin, Phone, Mail, Send, Clock, Instagram, Facebook, Loader2 } from "lucide-react"
+
+const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzg3Wmqk6AOhavFo5MgK2sfm9cGYHoYOWAMn845g6ZCIKregUz_9JvTBTzNMLtbX2J1kA/exec"
 
 export default function BookingForm() {
-    const [submitted, setSubmitted] = useState(false)
-    const [form, setForm] = useState({ name: "", phone: "", email: "", room: "", location: "Ambattur", message: "" })
+    const router = useRouter()
+    const [loading, setLoading] = useState(false)
+    const [form, setForm] = useState({ name: "", phone: "", email: "", room: "", message: "" })
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
-        setSubmitted(true)
+        setLoading(true)
+        try {
+            const res = await fetch(APPS_SCRIPT_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain" },
+                body: JSON.stringify({
+                    fullName: form.name,
+                    phone: form.phone,
+                    email: form.email,
+                    roomSharing: form.room,
+                    requirements: form.message,
+                }),
+            })
+            if (res.ok || res.type === "opaque") {
+                router.push("/thank-you")
+            } else {
+                router.push("/submission-failed")
+            }
+        } catch {
+            router.push("/submission-failed")
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -40,7 +67,6 @@ export default function BookingForm() {
                         </h2>
 
                         <div className="space-y-12">
-                            {/* Contact items */}
                             <div className="flex gap-6 group">
                                 <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-lg">
                                     <Phone className="w-6 h-6 text-[#e91e63] group-hover:text-white transition-colors" />
@@ -105,95 +131,104 @@ export default function BookingForm() {
                 {/* ── Right Panel (Form) ── */}
                 <div className="lg:w-[60%] p-8 sm:p-12 lg:p-24 bg-white flex flex-col justify-center">
 
-                    {submitted ? (
-                        <div className="text-center py-16 sm:py-20 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-zinc-50 border-2 border-dashed border-zinc-100 flex flex-col items-center">
-                            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#e91e63]/10 border-4 border-white shadow-xl flex items-center justify-center mb-8">
-                                <CheckCircle2 className="w-10 h-10 sm:w-12 sm:h-12 text-[#e91e63]" />
-                            </div>
-                            <h3 className="font-display font-bold text-zinc-900 text-[1.8rem] sm:text-[2.2rem] mb-4">Message Received!</h3>
-                            <p className="font-sans text-zinc-500 text-[1rem] sm:text-[1.15rem] max-w-sm leading-relaxed mb-10">
-                                Our admissions team will reach out to you within 24 hours to schedule a visit or answer your questions.
-                            </p>
-                            <button
-                                onClick={() => setSubmitted(false)}
-                                className="font-sans font-bold text-[#e91e63] px-6 sm:px-8 py-3 rounded-xl border border-[#e91e63]/20 hover:bg-[#e91e63]/5 transition-colors"
-                            >
-                                Send Another Message
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="max-w-2xl mx-auto w-full">
-                            <h3 className="font-display font-bold text-zinc-900 text-[1.8rem] sm:text-[2rem] lg:text-[2.5rem] mb-4">Request a Call Back</h3>
-                            <p className="font-sans text-zinc-500 text-[1rem] sm:text-[1.1rem] mb-10 sm:mb-12">
-                                Ready for a premium hostel experience? Fill in the details below and we&apos;ll handle the rest.
-                            </p>
+                    <div className="max-w-2xl mx-auto w-full">
+                        <h3 className="font-display font-bold text-zinc-900 text-[1.8rem] sm:text-[2rem] lg:text-[2.5rem] mb-4">Request a Call Back</h3>
+                        <p className="font-sans text-zinc-500 text-[1rem] sm:text-[1.1rem] mb-10 sm:mb-12">
+                            Ready for a premium hostel experience? Fill in the details below and we&apos;ll handle the rest.
+                        </p>
 
-                            <form onSubmit={handleSubmit} className="space-y-8">
-                                <div className="grid sm:grid-cols-2 gap-8">
-                                    <div className="group relative">
-                                        <input
-                                            name="name" type="text" required value={form.name} onChange={handleChange}
-                                            placeholder=" "
-                                            className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-3 outline-none transition-all focus:border-[#e91e63] placeholder-transparent"
-                                        />
-                                        <label className="absolute left-0 top-3 font-sans font-bold text-zinc-400 text-[0.8rem] uppercase tracking-widest transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63] pointer-events-none">Full Name *</label>
-                                    </div>
-                                    <div className="group relative">
-                                        <input
-                                            name="phone" type="tel" required value={form.phone} onChange={handleChange}
-                                            placeholder=" "
-                                            className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-3 outline-none transition-all focus:border-[#e91e63] placeholder-transparent"
-                                        />
-                                        <label className="absolute left-0 top-3 font-sans font-bold text-zinc-400 text-[0.8rem] uppercase tracking-widest transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63] pointer-events-none">Phone Number *</label>
-                                    </div>
-                                </div>
-
-                                <div className="group relative">
+                        <form onSubmit={handleSubmit} className="space-y-10">
+                            <div className="grid sm:grid-cols-2 gap-8">
+                                {/* Full Name */}
+                                <div className="relative pt-5">
                                     <input
-                                        name="email" type="email" value={form.email} onChange={handleChange}
-                                        placeholder=" "
-                                        className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-3 outline-none transition-all focus:border-[#e91e63] placeholder-transparent"
+                                        name="name" type="text" required value={form.name} onChange={handleChange}
+                                        placeholder=" " disabled={loading}
+                                        className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-2 outline-none transition-all focus:border-[#e91e63] placeholder-transparent disabled:opacity-60"
                                     />
-                                    <label className="absolute left-0 top-3 font-sans font-bold text-zinc-400 text-[0.8rem] uppercase tracking-widest transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63] pointer-events-none">Email Address</label>
+                                    <label className="absolute left-0 top-0 font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest transition-all duration-200
+                                        peer-placeholder-shown:top-7 peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-zinc-400
+                                        peer-focus:top-0 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63]
+                                        pointer-events-none">Full Name *</label>
                                 </div>
-
-                                <div className="grid sm:grid-cols-2 gap-8">
-                                    <div className="group relative border-b-2 border-zinc-200 pt-2 transition-all group-focus-within:border-[#e91e63]">
-                                        <label className="block font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest mb-1">Room Sharing *</label>
-                                        <select
-                                            name="room" required value={form.room} onChange={handleChange}
-                                            className="w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent py-3 outline-none appearance-none cursor-pointer"
-                                        >
-                                            <option value="">Choose preference</option>
-                                            <option value="two">Two Sharing</option>
-                                            <option value="three">Three Sharing</option>
-                                            <option value="four">Four Sharing</option>
-                                        </select>
-                                    </div>
-                                    <div className="group relative border-b-2 border-zinc-100 pt-2 opacity-60">
-                                        <label className="block font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest mb-1">Location</label>
-                                        <div className="font-sans text-zinc-500 font-semibold text-[1.05rem] py-3">Ambattur - SIDCO</div>
-                                    </div>
-                                </div>
-
-                                <div className="group relative">
-                                    <textarea
-                                        name="message" value={form.message} onChange={handleChange}
-                                        placeholder=" " rows={3}
-                                        className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-3 outline-none transition-all focus:border-[#e91e63] placeholder-transparent resize-none"
+                                {/* Phone */}
+                                <div className="relative pt-5">
+                                    <input
+                                        name="phone" type="tel" required value={form.phone} onChange={handleChange}
+                                        placeholder=" " disabled={loading}
+                                        className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-2 outline-none transition-all focus:border-[#e91e63] placeholder-transparent disabled:opacity-60"
                                     />
-                                    <label className="absolute left-0 top-3 font-sans font-bold text-zinc-400 text-[0.8rem] uppercase tracking-widest transition-all peer-placeholder-shown:text-[1rem] peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63] pointer-events-none">Additional Requirements (e.g. AC/Fridge)</label>
+                                    <label className="absolute left-0 top-0 font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest transition-all duration-200
+                                        peer-placeholder-shown:top-7 peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-zinc-400
+                                        peer-focus:top-0 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63]
+                                        pointer-events-none">Phone Number *</label>
                                 </div>
+                            </div>
 
-                                <button type="submit"
-                                    className="group relative w-full inline-flex items-center justify-center gap-4 py-5 rounded-2xl bg-[#050505] text-white font-sans font-bold text-[1.1rem] overflow-hidden transition-all duration-300 hover:bg-[#e91e63] hover:shadow-[0_20px_40px_rgba(233,30,99,0.35)] shadow-xl active:scale-95"
-                                >
-                                    <span className="relative z-10">Submit Enquiry</span>
-                                    <Send className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                                </button>
-                            </form>
-                        </div>
-                    )}
+                            {/* Email */}
+                            <div className="relative pt-5">
+                                <input
+                                    name="email" type="email" value={form.email} onChange={handleChange}
+                                    placeholder=" " disabled={loading}
+                                    className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-2 outline-none transition-all focus:border-[#e91e63] placeholder-transparent disabled:opacity-60"
+                                />
+                                <label className="absolute left-0 top-0 font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest transition-all duration-200
+                                    peer-placeholder-shown:top-7 peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-zinc-400
+                                    peer-focus:top-0 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63]
+                                    pointer-events-none">Email Address</label>
+                            </div>
+
+                            <div className="grid sm:grid-cols-2 gap-8">
+                                <div className="group relative border-b-2 border-zinc-200 pt-2 transition-all focus-within:border-[#e91e63]">
+                                    <label className="block font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest mb-1">Room Sharing *</label>
+                                    <select
+                                        name="room" required value={form.room} onChange={handleChange} disabled={loading}
+                                        className="w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent py-3 outline-none appearance-none cursor-pointer disabled:opacity-60"
+                                    >
+                                        <option value="">Choose preference</option>
+                                        <option value="Two Sharing">Two Sharing</option>
+                                        <option value="Three Sharing">Three Sharing</option>
+                                        <option value="Four Sharing">Four Sharing</option>
+                                    </select>
+                                </div>
+                                <div className="relative border-b-2 border-zinc-100 pt-2 opacity-60">
+                                    <label className="block font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest mb-1">Location</label>
+                                    <div className="font-sans text-zinc-500 font-semibold text-[1.05rem] py-3">Ambattur - SIDCO</div>
+                                </div>
+                            </div>
+
+                            {/* Message */}
+                            <div className="relative pt-5">
+                                <textarea
+                                    name="message" value={form.message} onChange={handleChange}
+                                    placeholder=" " rows={3} disabled={loading}
+                                    className="peer w-full font-sans text-zinc-900 font-semibold text-[1.05rem] bg-transparent border-b-2 border-zinc-200 py-2 outline-none transition-all focus:border-[#e91e63] placeholder-transparent resize-none disabled:opacity-60"
+                                />
+                                <label className="absolute left-0 top-0 font-sans font-bold text-zinc-400 text-[0.7rem] uppercase tracking-widest transition-all duration-200
+                                    peer-placeholder-shown:top-7 peer-placeholder-shown:text-[1rem] peer-placeholder-shown:text-zinc-400
+                                    peer-focus:top-0 peer-focus:text-[0.7rem] peer-focus:text-[#e91e63]
+                                    pointer-events-none">Additional Requirements (e.g. AC/Fridge)</label>
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="group relative w-full inline-flex items-center justify-center gap-4 py-5 rounded-2xl bg-[#050505] text-white font-sans font-bold text-[1.1rem] overflow-hidden transition-all duration-300 hover:bg-[#e91e63] hover:shadow-[0_20px_40px_rgba(233,30,99,0.35)] shadow-xl active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:bg-[#050505] disabled:hover:shadow-none"
+                            >
+                                {loading ? (
+                                    <>
+                                        <Loader2 className="w-5 h-5 animate-spin" />
+                                        <span>Submitting…</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span className="relative z-10">Submit Enquiry</span>
+                                        <Send className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                                    </>
+                                )}
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
             </div>
