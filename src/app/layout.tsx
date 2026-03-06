@@ -18,10 +18,134 @@ const outfit = Outfit({
   display: "swap",
 });
 
+const siteUrl = "https://www.geethamhostels.in";
+const siteName = "Geetham Women's Hostel";
+
 export const metadata: Metadata = {
-  title: "Geetham Womens Hostel | Premium Stay in Ambattur, Chennai",
+  metadataBase: new URL(siteUrl),
+
+  title: {
+    default: "Geetham Women's Hostel | Premium Stay in Ambattur, Chennai",
+    template: "%s | Geetham Women's Hostel",
+  },
   description:
-    "Geetham Women's Hostel offers luxurious accommodation exclusively for women IAS aspirants and working professionals in Ambattur, Chennai. Premium rooms, 24/7 security, homely food and more.",
+    "Geetham Women's Hostel offers safe, comfortable and affordable accommodation exclusively for women — IAS aspirants and working professionals in Ambattur, Chennai. Premium rooms, 24/7 security, homely food, Wi-Fi, and more.",
+
+  keywords: [
+    "women's hostel Chennai",
+    "ladies hostel Ambattur",
+    "working women hostel Chennai",
+    "IAS aspirant hostel Chennai",
+    "female hostel Ambattur",
+    "PG for ladies Chennai",
+    "women PG Ambattur",
+    "safe hostel for women",
+    "Geetham hostel",
+    "hostel near Ambattur Industrial Estate",
+  ],
+
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  alternates: {
+    canonical: siteUrl,
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: siteUrl,
+    siteName,
+    title: "Geetham Women's Hostel | Premium Stay in Ambattur, Chennai",
+    description:
+      "Safe, comfortable & affordable accommodation for women — IAS aspirants & working professionals in Ambattur, Chennai. 24/7 security, homely food, premium rooms.",
+    images: [
+      {
+        url: "/assets/logo.png",
+        width: 800,
+        height: 200,
+        alt: "Geetham Women's Hostel – Premium Accommodation in Ambattur, Chennai",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Geetham Women's Hostel | Premium Stay in Ambattur, Chennai",
+    description:
+      "Safe, comfortable & affordable accommodation for women in Ambattur, Chennai. 24/7 security, homely food & premium rooms.",
+    images: ["/assets/logo.png"],
+  },
+
+  verification: {
+    // google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+  },
+
+  category: "Accommodation",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: "Geetham Women's Hostel",
+  url: siteUrl,
+  logo: `${siteUrl}/assets/logo.png`,
+  image: `${siteUrl}/assets/logo.png`,
+  description:
+    "Safe, comfortable and affordable hostel accommodation exclusively for women — IAS aspirants and working professionals in Ambattur, Chennai.",
+  priceRange: "₹₹",
+  telephone: "+91-93443-82988",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Ambattur",
+    addressLocality: "Chennai",
+    addressRegion: "Tamil Nadu",
+    postalCode: "600053",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 13.1143,
+    longitude: 80.1548,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  ],
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "24/7 Security", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Wi-Fi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Homely Food", value: true },
+    { "@type": "LocationFeatureSpecification", name: "AC Rooms", value: true },
+    { "@type": "LocationFeatureSpecification", name: "CCTV Surveillance", value: true },
+  ],
+  sameAs: [
+    "https://www.instagram.com/geethamhostel",
+  ],
 };
 
 export default function RootLayout({
@@ -30,7 +154,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${dmSans.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
