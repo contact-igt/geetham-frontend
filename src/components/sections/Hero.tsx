@@ -7,9 +7,24 @@ import { Star, ChevronLeft, ChevronRight, ArrowRight, MapPin } from "lucide-reac
 import { handleSmoothScroll } from "@/utils/scroll"
 
 const SLIDES = [
-    { image: "/assets/gen_hero1.png", alt: "Geetham Womens Hostel – Common Area", tag: "Premium Living Spaces" },
-    { image: "/assets/gen_hero2.png", alt: "Geetham Womens Hostel – Room View", tag: "Luxurious Rooms" },
-    { image: "/assets/gen_hero3.png", alt: "Geetham Womens Hostel – Twin Sharing", tag: "Spacious Accommodation" },
+    { src: "/assets/herobanner1.jpg", alt: "Geetham Womens Hostel – Common Area", tag: "Premium Living Spaces" },
+    { src: "/assets/pic10.jpg", alt: "Geetham Womens Hostel – Room View", tag: "Luxurious Rooms" },
+    { src: "/assets/pic6.jpg", alt: "Geetham Womens Hostel – Twin Sharing", tag: "Spacious Accommodation" },
+    {
+        src: "/assets/pic18.jpg",
+        alt: "Geetham Womens Hostel – Two Sharing Room",
+        tag: "Comfortable Sharing Rooms",
+    },
+    {
+        src: "/assets/pic20.jpg",
+        alt: "Geetham Womens Hostel – Three Sharing Room",
+        tag: "Affordable Group Living",
+    },
+    {
+        src: "/assets/pic15.jpg",
+        alt: "Geetham Womens Hostel – Bathroom Facilities",
+        tag: "Clean & Hygienic Facilities",
+    },
 ]
 
 
@@ -41,7 +56,7 @@ export default function Hero() {
                 <div key={i} className="absolute inset-0 transition-opacity duration-[1200ms] ease-in-out"
                     style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}>
                     <Image
-                        src={slide.image} alt={slide.alt} fill priority={i === 0}
+                        src={slide.src} alt={slide.alt} fill priority={i === 0}
                         className="object-cover object-center"
                         style={{ transform: i === current ? "scale(1.06)" : "scale(1)", transition: "transform 7s ease-out" }}
                     />

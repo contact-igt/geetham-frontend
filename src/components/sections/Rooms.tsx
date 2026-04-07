@@ -8,7 +8,7 @@ import { handleSmoothScroll } from "@/utils/scroll"
 const ROOMS = [
     {
         id: "two-sharing", type: "Two Sharing", icon: BedDouble,
-        image: "/assets/gen_room_two.png", tag: "Most Popular", tagColor: "#e11d48",
+        image: "/assets/pic3.jpg", tag: "Most Popular", tagColor: "#e11d48",
         accent: "#e11d48", accentLight: "#fff1f2", accentBorder: "#fecdd3",
         description: "A bright, spacious room designed for two, offering complete privacy and comfort with dedicated storage and natural lighting. Perfect for women who value personal space without compromise.",
         features: ["Attached Wardrobe", "Personal Study Desk", "High-Speed Wi-Fi", "AC / Non-AC"],
@@ -20,8 +20,7 @@ const ROOMS = [
     },
     {
         id: "three-sharing", type: "Three Sharing", icon: Users,
-        image: "/assets/gen_room_three.png", tag: "Best Value", tagColor: "#0284c7",
-        accent: "#0284c7", accentLight: "#eff6ff", accentBorder: "#bfdbfe",
+        image: "/assets/pic20.jpg", tag: "Best Value", tagColor: "#0284c7",
         description: "A well-ventilated three-occupant room with ample space for everyone — a great balance between comfort and affordability.",
         features: ["Shared Wardrobe Space", "Common Study Area", "High-Speed Wi-Fi", "Fan + Ventilation"],
         perks: [
@@ -32,7 +31,7 @@ const ROOMS = [
     },
     {
         id: "four-sharing", type: "Four Sharing", icon: Users2,
-        image: "/assets/gen_room_four.png", tag: "Budget Friendly", tagColor: "#16a34a",
+        image: "/assets/pic6.jpg", tag: "Budget Friendly", tagColor: "#16a34a",
         accent: "#16a34a", accentLight: "#f0fdf4", accentBorder: "#bbf7d0",
         description: "An economical four-occupant room perfect for students focused on IAS preparation, with all essential amenities included.",
         features: ["Individual Bed Space", "Shared Storage", "High-Speed Wi-Fi", "Fan Cooling"],

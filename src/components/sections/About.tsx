@@ -112,7 +112,7 @@ export default function About() {
                 {/* Right: Full-bleed photo */}
                 <div className="relative lg:w-[50%] min-h-[380px] lg:min-h-0 overflow-hidden">
                     <Image
-                        src="/assets/gen_about1.png"
+                        src="/assets/herobanner1.jpg"
                         alt="Geetham Women's Hostel"
                         fill
                         className="object-cover object-center"
@@ -208,7 +208,7 @@ export default function About() {
                         {/* Photo with floating badges */}
                         <div className="relative">
                             <div className="relative w-full aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-[0_30px_80px_rgba(225,29,72,0.08)]">
-                                <Image src="/assets/gen_about2.png" alt="Students at Geetham Hostel" fill className="object-cover" />
+                                <Image src="/assets/pic9.jpg" alt="Students at Geetham Hostel" fill className="object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-red-900/30 via-transparent to-transparent" />
                                 {/* Rose tint on edges */}
                                 <div className="absolute inset-0 pointer-events-none"

@@ -5,13 +5,28 @@ import Image from "next/image"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 
 const GALLERY_IMAGES = [
-    { src: "/assets/gen_gal1.png", alt: "Two Sharing Premium Room", span: "lg:col-span-2 lg:row-span-2" },
-    { src: "/assets/gen_gal2.png", alt: "Dormitory Four-Sharing Room", span: "" },
-    { src: "/assets/gen_gal3.png", alt: "Hygienic Bathroom Facilities", span: "" },
-    { src: "/assets/gen_gal4.png", alt: "Three Sharing Spacious Room", span: "" },
-    { src: "/assets/gen_gal5.png", alt: "Hostel Building Entrance", span: "" },
-    { src: "/assets/gen_gal6.png", alt: "Hostel Dining Hall", span: "" },
-    { src: "/assets/gen_hero1.png", alt: "Common Living Area", span: "" },
+    { src: "/assets/pic19.jpg", alt: "Two Sharing Premium Room", span: "lg:col-span-2 lg:row-span-2" },
+    { src: "/assets/pic12.jpg", alt: "Dormitory Accommodation", span: "" },
+    { src: "/assets/pic21.jpg", alt: "Hygienic Bathroom Facilities", span: "" },
+    { src: "/assets/pic20.jpg", alt: "Three Sharing Spacious Room", span: "" },
+    { src: "/assets/pic2.jpg", alt: "Geetham Hostel Building Entrance", span: "" },
+    { src: "/assets/gallery6.png", alt: "Hostel Street View in Ambattur", span: "" },
+    { src: "/assets/pic16.jpg", alt: "Common Entertainment Area", span: "" },
+    {
+        src: "/assets/pic10.jpg",
+        alt: "Dining Area with Seating Arrangement",
+        span: "",
+    },
+    {
+        src: "/assets/pic23.jpg",
+        alt: "Laundry and Washing Facilities",
+        span: "",
+    },
+    {
+        src: "/assets/pic11.jpg",
+        alt: "Outdoor Relaxation Space",
+        span: "",
+    },
 ]
 
 export default function Gallery() {
