@@ -10,7 +10,7 @@ const GALLERY_IMAGES = [
     { src: "/assets/pic21.jpg", alt: "Hygienic Bathroom Facilities", span: "" },
     { src: "/assets/pic20.jpg", alt: "Three Sharing Spacious Room", span: "" },
     { src: "/assets/pic2.jpg", alt: "Geetham Hostel Building Entrance", span: "" },
-    { src: "/assets/gallery6.png", alt: "Hostel Street View in Ambattur", span: "" },
+    { src: "/assets/pic24.png", alt: "Hostel Street View in Ambattur", span: "" },
     { src: "/assets/pic16.jpg", alt: "Common Entertainment Area", span: "" },
     {
         src: "/assets/pic10.jpg",
