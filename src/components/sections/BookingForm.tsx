@@ -49,7 +49,7 @@ export default function BookingForm() {
             <div className="max-w-[1440px] mx-auto lg:flex min-h-[850px]">
 
                 {/* ── Left Panel (Contact Info) ── */}
-                <div className="lg:w-[40%] bg-zinc-950 p-8 sm:p-12 lg:p-20 relative flex flex-col justify-between overflow-hidden">
+                <div className="lg:w-[40%] bg-[#fdf2f5] p-8 sm:p-12 lg:p-20 relative flex flex-col justify-between overflow-hidden">
                     {/* Background Graphic */}
                     <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
                         <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full border-[40px] border-[#e91e63]" />
@@ -61,40 +61,40 @@ export default function BookingForm() {
                             <span className="font-sans text-[0.75rem] font-bold uppercase tracking-[0.3em] text-[#e91e63]">Contact Us</span>
                         </div>
 
-                        <h2 className="font-display font-bold text-white mb-10" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1 }}>
+                        <h2 className="font-display font-bold text-zinc-900 mb-10" style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.1 }}>
                             Let&apos;s Build Your <br />
                             <span className="text-[#e91e63]">Future Together.</span>
                         </h2>
 
                         <div className="space-y-12">
                             <div className="flex gap-6 group">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-lg">
+                                <div className="w-14 h-14 rounded-2xl bg-rose-100 border border-rose-200 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-sm">
                                     <Phone className="w-6 h-6 text-[#e91e63] group-hover:text-white transition-colors" />
                                 </div>
                                 <div>
-                                    <p className="font-sans text-white/40 text-[0.7rem] uppercase tracking-widest font-bold mb-2">Direct Line</p>
-                                    <a href="tel:+919344382988" className="font-sans text-white font-bold text-[1.1rem] sm:text-[1.2rem] hover:text-[#e91e63] transition-colors block leading-tight">+91 93443 82988</a>
-                                    <a href="tel:+919842765530" className="font-sans text-white/60 text-[0.95rem] sm:text-[1rem] font-medium hover:text-[#e91e63] transition-colors mt-1 block">+91 98427 65530</a>
+                                    <p className="font-sans text-zinc-400 text-[0.7rem] uppercase tracking-widest font-bold mb-2">Direct Line</p>
+                                    <a href="tel:+919344382988" className="font-sans text-zinc-900 font-bold text-[1.1rem] sm:text-[1.2rem] hover:text-[#e91e63] transition-colors block leading-tight">+91 93443 82988</a>
+                                    <a href="tel:+919842765530" className="font-sans text-zinc-500 text-[0.95rem] sm:text-[1rem] font-medium hover:text-[#e91e63] transition-colors mt-1 block">+91 98427 65530</a>
                                 </div>
                             </div>
 
                             <div className="flex gap-6 group">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-lg">
+                                <div className="w-14 h-14 rounded-2xl bg-rose-100 border border-rose-200 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-sm">
                                     <Mail className="w-6 h-6 text-[#e91e63] group-hover:text-white transition-colors" />
                                 </div>
                                 <div>
-                                    <p className="font-sans text-white/40 text-[0.7rem] uppercase tracking-widest font-bold mb-2">Support Email</p>
-                                    <a href="mailto:geethamhostel.in@gmail.com" className="font-sans text-white font-bold text-[1rem] sm:text-[1.1rem] hover:text-[#e91e63] transition-colors">geethamhostel.in@gmail.com</a>
+                                    <p className="font-sans text-zinc-400 text-[0.7rem] uppercase tracking-widest font-bold mb-2">Support Email</p>
+                                    <a href="mailto:geethamhostel.in@gmail.com" className="font-sans text-zinc-900 font-bold text-[1rem] sm:text-[1.1rem] hover:text-[#e91e63] transition-colors">geethamhostel.in@gmail.com</a>
                                 </div>
                             </div>
 
                             <div className="flex gap-6 group">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-lg">
+                                <div className="w-14 h-14 rounded-2xl bg-rose-100 border border-rose-200 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-sm">
                                     <MapPin className="w-6 h-6 text-[#e91e63] group-hover:text-white transition-colors" />
                                 </div>
                                 <div>
-                                    <p className="font-sans text-white/40 text-[0.7rem] uppercase tracking-widest font-bold mb-3">Hostel Location</p>
-                                    <p className="font-sans text-white/80 text-[0.95rem] sm:text-[1.05rem] leading-[1.6] font-medium">
+                                    <p className="font-sans text-zinc-400 text-[0.7rem] uppercase tracking-widest font-bold mb-3">Hostel Location</p>
+                                    <p className="font-sans text-zinc-700 text-[0.95rem] sm:text-[1.05rem] leading-[1.6] font-medium">
                                         24, 25, Coromandel Town,<br />
                                         SIDCO Industrial Estate,<br />
                                         Ambattur, Chennai - 600098
@@ -103,26 +103,26 @@ export default function BookingForm() {
                             </div>
 
                             <div className="flex gap-6 group">
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-lg">
+                                <div className="w-14 h-14 rounded-2xl bg-rose-100 border border-rose-200 flex items-center justify-center shrink-0 group-hover:bg-[#e91e63] group-hover:border-[#e91e63] transition-all duration-300 shadow-sm">
                                     <Clock className="w-6 h-6 text-[#e91e63] group-hover:text-white transition-colors" />
                                 </div>
                                 <div>
-                                    <p className="font-sans text-white/40 text-[0.7rem] uppercase tracking-widest font-bold mb-2">Visiting Hours</p>
-                                    <p className="font-sans text-white font-bold text-[0.95rem] sm:text-[1rem]">Mon – Sat: 9 AM – 7 PM</p>
-                                    <p className="font-sans text-white/60 text-[0.85rem] sm:text-[0.9rem] mt-1 italic">Sunday by appointment only</p>
+                                    <p className="font-sans text-zinc-400 text-[0.7rem] uppercase tracking-widest font-bold mb-2">Visiting Hours</p>
+                                    <p className="font-sans text-zinc-900 font-bold text-[0.95rem] sm:text-[1rem]">Mon – Sat: 9 AM – 7 PM</p>
+                                    <p className="font-sans text-zinc-500 text-[0.85rem] sm:text-[0.9rem] mt-1 italic">Sunday by appointment only</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="relative z-10 pt-10 sm:pt-16 flex items-center gap-6 border-t border-white/10 mt-10 sm:mt-16">
-                        <span className="font-sans text-white/40 text-[0.7rem] font-bold uppercase tracking-widest">Follow Us</span>
+                    <div className="relative z-10 pt-10 sm:pt-16 flex items-center gap-6 border-t border-zinc-200 mt-10 sm:mt-16">
+                        <span className="font-sans text-zinc-400 text-[0.7rem] font-bold uppercase tracking-widest">Follow Us</span>
                         <div className="flex items-center gap-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#e91e63] transition-colors border border-white/10">
-                                <Instagram className="w-4.5 h-4.5 text-white" />
+                            <a href="#" className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center hover:bg-[#e91e63] transition-colors border border-rose-200 text-zinc-600 hover:text-white">
+                                <Instagram className="w-4 h-4" />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#e91e63] transition-colors border border-white/10">
-                                <Facebook className="w-4.5 h-4.5 text-white" />
+                            <a href="#" className="w-10 h-10 rounded-full bg-rose-100 flex items-center justify-center hover:bg-[#e91e63] transition-colors border border-rose-200 text-zinc-600 hover:text-white">
+                                <Facebook className="w-4 h-4" />
                             </a>
                         </div>
                     </div>
