@@ -50,13 +50,11 @@ export default function Rooms() {
     return (
         <section id="rooms" className="relative overflow-hidden bg-white">
 
-            {/* Soft rose tint top */}
             <div className="absolute top-0 inset-x-0 h-[480px] pointer-events-none"
                 style={{ background: "linear-gradient(180deg, #fef2f5 0%, transparent 100%)" }} />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-14 py-28 lg:py-36 relative z-10">
 
-                {/* ── Header ── */}
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
                     <div>
                         <div className="flex items-center gap-3 mb-5">
