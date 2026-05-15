@@ -80,7 +80,11 @@ export const metadata: Metadata = {
       },
     ],
   },
-
+  icons: {
+    icon: "/assets/favicon.ico",
+    shortcut: "/assets/favicon.ico",
+    apple: "/assets/favicon.ico",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Geetham Women's Hostel | Premium Stay in Ambattur, Chennai",
@@ -160,6 +164,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <link rel="icon" href="/assets/logo.png" />
+        <link rel="apple-touch-icon" href="/assets/logo.png" />
+        <meta name="theme-color" content="#ffffff" />
       </head>
       <body
         className={`${dmSans.variable} ${outfit.variable} font-sans antialiased min-h-screen flex flex-col`}
