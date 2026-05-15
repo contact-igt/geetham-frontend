@@ -73,7 +73,7 @@ export const metadata: Metadata = {
       "Safe, comfortable & affordable accommodation for women — IAS aspirants & working professionals in Ambattur, Chennai. 24/7 security, homely food, premium rooms.",
     images: [
       {
-        url: "/assets/favicon.ico",
+        url: "/favicon.ico",
         width: 800,
         height: 200,
         alt: "Geetham Women's Hostel – Premium Accommodation in Ambattur, Chennai",
@@ -81,16 +81,16 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: "/assets/favicon.ico",
-    shortcut: "/assets/favicon.ico",
-    apple: "/assets/favicon.ico",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   twitter: {
     card: "summary_large_image",
     title: "Geetham Women's Hostel | Premium Stay in Ambattur, Chennai",
     description:
       "Safe, comfortable & affordable accommodation for women in Ambattur, Chennai. 24/7 security, homely food & premium rooms.",
-    images: ["/assets/favicon.ico"],
+    images: ["/favicon.ico"],
   },
 
   verification: {
@@ -105,8 +105,8 @@ const jsonLd = {
   "@type": "LodgingBusiness",
   name: "Geetham Women's Hostel",
   url: siteUrl,
-  logo: `${siteUrl}/assets/favicon.ico`,
-  image: `${siteUrl}/assets/favicon.ico`,
+  logo: `${siteUrl}/favicon.ico`,
+  image: `${siteUrl}/favicon.ico`,
   description:
     "Safe, comfortable and affordable hostel accommodation exclusively for women — IAS aspirants and working professionals in Ambattur, Chennai.",
   priceRange: "₹₹",
@@ -164,8 +164,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="icon" href="/assets/favicon.ico" />
-        <link rel="apple-touch-icon" href="/assets/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body
