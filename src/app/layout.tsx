@@ -73,7 +73,7 @@ export const metadata: Metadata = {
       "Safe, comfortable & affordable accommodation for women — IAS aspirants & working professionals in Ambattur, Chennai. 24/7 security, homely food, premium rooms.",
     images: [
       {
-        url: "/assets/og-image.jpg",
+        url: "/assets/herobanner1.jpg",
         width: 1200,
         height: 630,
         alt: "Geetham Women's Hostel – Premium Accommodation in Ambattur, Chennai",
