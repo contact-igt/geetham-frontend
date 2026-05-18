@@ -73,18 +73,15 @@ export const metadata: Metadata = {
       "Safe, comfortable & affordable accommodation for women — IAS aspirants & working professionals in Ambattur, Chennai. 24/7 security, homely food, premium rooms.",
     images: [
       {
-        url: "/favicon.ico",
-        width: 800,
-        height: 200,
+        url: "/assets/og-image.jpg",
+        width: 1200,
+        height: 630,
         alt: "Geetham Women's Hostel – Premium Accommodation in Ambattur, Chennai",
       },
     ],
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/icon.png", sizes: "512x512", type: "image/png" },
-    ],
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
@@ -93,7 +90,7 @@ export const metadata: Metadata = {
     title: "Geetham Women's Hostel | Premium Stay in Ambattur, Chennai",
     description:
       "Safe, comfortable & affordable accommodation for women in Ambattur, Chennai. 24/7 security, homely food & premium rooms.",
-    images: ["/favicon.ico"],
+    images: ["/assets/herobanner1.jpg"],
   },
 
   verification: {
@@ -108,8 +105,8 @@ const jsonLd = {
   "@type": "LodgingBusiness",
   name: "Geetham Women's Hostel",
   url: siteUrl,
-  logo: `${siteUrl}/favicon.ico`,
-  image: `${siteUrl}/favicon.ico`,
+  logo: `${siteUrl}/assets/logo.png`,
+  image: `${siteUrl}/assets/herobanner1.jpg`,
   description:
     "Safe, comfortable and affordable hostel accommodation exclusively for women — IAS aspirants and working professionals in Ambattur, Chennai.",
   priceRange: "₹₹",
